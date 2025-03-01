@@ -1,0 +1,5 @@
+pywin32
+matplotlib
+pyserial
+requests
+pycryptodome
