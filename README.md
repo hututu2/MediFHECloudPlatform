@@ -26,5 +26,5 @@
 1. `SEAL_service.py`放在项目根目录，直接作为模块import使用`import SEAL_service`；`_SEAL_service.so`放在`Python根目录/lib-dynload`
 2. `pip install -r requirements.txt` 安装依赖
 3. 终端运行app.py即可
-4. 数据库：建库webproject，表doctor(字段为key_hash),默认ip为127.0.0.1，用户root，密码root
+4. 数据库：建库webproject，表doctor(字段为key_hash), 默认ip为127.0.0.1，用户root，密码root
 
