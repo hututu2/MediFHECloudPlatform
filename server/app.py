@@ -301,3 +301,66 @@ class Change_PatientHandler(tornado.web.RequestHandler):
             cursor.close()
             db_connect.close()
         self.finish()
+
+
+
+class Delete_PatientHandler(tornado.web.RequestHandler):
+    def post(self):
+        password=self.get_argument('password')
+        id_number=self.get_argument('id_number')
+        if checkpassword(password) and checkid_number(id_number):
+            db_connect = pymysql.connect(**mysql_settings)
+            cursor = db_connect.cursor()
+            delete_sql1 = 'delete from {} where id_number="{}"'.format(password,id_number)
+            cursor.execute(delete_sql1)
+            delete_sql2 = 'drop table {}'.format(genearteMD5(id_number))
+            cursor.execute(delete_sql2)
+            db_connect.commit()
+            cursor.close()
+            db_connect.close()
+        self.finish()
+class PatientlistHandler(tornado.web.RequestHandler):
+    def get(self):
+        password=self.get_argument('password')
+        str=''
+        if checkpassword(password):
+            db_connect = pymysql.connect(**mysql_settings)
+            cursor = db_connect.cursor()
+            select_sql = 'select * from {}'.format(password)
+            cursor.execute(select_sql)
+            db_connect.commit()
+            result=cursor.fetchall()
+            if(len(result)!=0):
+                for i in range(len(result)):
+                    for j in range(len(result[i])):
+                        if(j==len(result[i])-1):
+                            if(i==len(result)-1):
+                                str+=''.join(result[i][j])
+                            else:
+                                str+=''.join(result[i][j])+','
+                        else:
+                            str+=''.join(result[i][j])+'|'
+            cursor.close()
+            db_connect.close()
+        self.write(str)
+def genearteMD5(str):
+    # 创建md5对象
+    hl = hashlib.md5()
+    hl.update(str.encode(encoding='utf-8'))
+    return hl.hexdigest()
+app = tornado.web.Application([
+    ('/login', Login),
+    ('/register', Register),
+    ('/file',UploadFileHandler),
+    ('/add_patient',Add_PatientHandler),
+    ('/change_patient',Change_PatientHandler),
+    ('/delete_patient',Delete_PatientHandler),
+    ('/patient_list',PatientlistHandler),
+    ('/dblist',DblistHandler),
+    ('/download',DownloadHandler)
+])
+
+if __name__ == '__main__':
+    server = tornado.httpserver.HTTPServer(app, max_buffer_size=1536000000)
+    server.listen(8888)
+    tornado.ioloop.IOLoop.current().start()
