@@ -124,4 +124,114 @@ _SEAL_service.SwigPyIterator_swigregister(SwigPyIterator)
 
 
 
+# vectorD
+class vectorD(object):
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+
+    def iterator(self) -> "swig::SwigPyIterator *":
+        return _SEAL_service.vectorD_iterator(self)
+    def __iter__(self):
+        return self.iterator()
+
+    def __nonzero__(self) -> "bool":
+        return _SEAL_service.vectorD___nonzero__(self)
+
+    def __bool__(self) -> "bool":
+        return _SEAL_service.vectorD___bool__(self)
+
+    def __len__(self) -> "std::vector< double >::size_type":
+        return _SEAL_service.vectorD___len__(self)
+
+    def __getslice__(self, i: "std::vector< double >::difference_type", j: "std::vector< double >::difference_type") -> "std::vector< double,std::allocator< double > > *":
+        return _SEAL_service.vectorD___getslice__(self, i, j)
+
+    def __setslice__(self, *args) -> "void":
+        return _SEAL_service.vectorD___setslice__(self, *args)
+
+    def __delslice__(self, i: "std::vector< double >::difference_type", j: "std::vector< double >::difference_type") -> "void":
+        return _SEAL_service.vectorD___delslice__(self, i, j)
+
+    def __delitem__(self, *args) -> "void":
+        return _SEAL_service.vectorD___delitem__(self, *args)
+
+    def __getitem__(self, *args) -> "std::vector< double >::value_type const &":
+        return _SEAL_service.vectorD___getitem__(self, *args)
+
+    def __setitem__(self, *args) -> "void":
+        return _SEAL_service.vectorD___setitem__(self, *args)
+
+    def pop(self) -> "std::vector< double >::value_type":
+        return _SEAL_service.vectorD_pop(self)
+
+    def append(self, x: "std::vector< double >::value_type const &") -> "void":
+        return _SEAL_service.vectorD_append(self, x)
+
+    def empty(self) -> "bool":
+        return _SEAL_service.vectorD_empty(self)
+
+    def size(self) -> "std::vector< double >::size_type":
+        return _SEAL_service.vectorD_size(self)
+
+    def swap(self, v: "vectorD") -> "void":
+        return _SEAL_service.vectorD_swap(self, v)
+
+    def begin(self) -> "std::vector< double >::iterator":
+        return _SEAL_service.vectorD_begin(self)
+
+    def end(self) -> "std::vector< double >::iterator":
+        return _SEAL_service.vectorD_end(self)
+
+    def rbegin(self) -> "std::vector< double >::reverse_iterator":
+        return _SEAL_service.vectorD_rbegin(self)
+
+    def rend(self) -> "std::vector< double >::reverse_iterator":
+        return _SEAL_service.vectorD_rend(self)
+
+    def clear(self) -> "void":
+        return _SEAL_service.vectorD_clear(self)
+
+    def get_allocator(self) -> "std::vector< double >::allocator_type":
+        return _SEAL_service.vectorD_get_allocator(self)
+
+    def pop_back(self) -> "void":
+        return _SEAL_service.vectorD_pop_back(self)
+
+    def erase(self, *args) -> "std::vector< double >::iterator":
+        return _SEAL_service.vectorD_erase(self, *args)
+
+    def __init__(self, *args):
+        _SEAL_service.vectorD_swiginit(self, _SEAL_service.new_vectorD(*args))
+
+    def push_back(self, x: "std::vector< double >::value_type const &") -> "void":
+        return _SEAL_service.vectorD_push_back(self, x)
+
+    def front(self) -> "std::vector< double >::value_type const &":
+        return _SEAL_service.vectorD_front(self)
+
+    def back(self) -> "std::vector< double >::value_type const &":
+        return _SEAL_service.vectorD_back(self)
+
+    def assign(self, n: "std::vector< double >::size_type", x: "std::vector< double >::value_type const &") -> "void":
+        return _SEAL_service.vectorD_assign(self, n, x)
+
+    def resize(self, *args) -> "void":
+        return _SEAL_service.vectorD_resize(self, *args)
+
+    def insert(self, *args) -> "void":
+        return _SEAL_service.vectorD_insert(self, *args)
+
+    def reserve(self, n: "std::vector< double >::size_type") -> "void":
+        return _SEAL_service.vectorD_reserve(self, n)
+
+    def capacity(self) -> "std::vector< double >::size_type":
+        return _SEAL_service.vectorD_capacity(self)
+    __swig_destroy__ = _SEAL_service.delete_vectorD
+
+# Register vectorD in _SEAL_service:
+_SEAL_service.vectorD_swigregister(vectorD)
+
+
+def calculate(ID: "unsigned int", user_data: "char *") -> "char *":
+    return _SEAL_service.calculate(ID, user_data)
 
